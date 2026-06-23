@@ -29,6 +29,7 @@ botao_pedra = pygame.transform.scale(botao_pedra,(40,40))
 botao_papel = pygame.transform.scale(botao_papel,(40,40))
 botao_tesoura = pygame.transform.scale(botao_tesoura,(40,40))
 
+#informa a posição das imagens
 rect_pedra = botao_pedra.get_rect(topleft=(100,130))
 rect_papel = botao_papel.get_rect(topleft=(350,130))
 rect_tesoura = botao_tesoura.get_rect(topleft=(600,130))
