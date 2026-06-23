@@ -23,9 +23,9 @@ botao_papel = pygame.image.load("papel.png")
 botao_tesoura = pygame.image.load("tesoura.png")
 
 #mudar o tamanho dos ícones
-botao_pedra = pygame.transform.scale(botao_pedra,(100,80))
-botao_papel = pygame.transform.scale(botao_papel,(100,80))
-botao_tesoura = pygame.transform.scale(botao_tesoura,(100,80))
+botao_pedra = pygame.transform.scale(botao_pedra,(80,80))
+botao_papel = pygame.transform.scale(botao_papel,(80,80))
+botao_tesoura = pygame.transform.scale(botao_tesoura,(80,80))
 
 
 
@@ -45,11 +45,11 @@ while not fim_jogo:
     tela.blit(texto,(posicao_x,posicao_y))
 
     #fazer a imagem imprimir na tela
-    rect_pedra = botao_pedra.get_rect(topleft=(100,400))
+    rect_pedra = botao_pedra.get_rect(topleft=(150,450))
     tela.blit(botao_pedra, rect_pedra)
-    rect_papel = botao_papel.get_rect(topleft=(150,510))
+    rect_papel = botao_papel.get_rect(topleft=(400,450))
     tela.blit(botao_papel, rect_papel)
-    rect_tesoura = botao_tesoura.get_rect(topleft=(200,420))
+    rect_tesoura = botao_tesoura.get_rect(topleft=(650,450))
     tela.blit(botao_tesoura, rect_tesoura)
 
     pygame.display.update()
