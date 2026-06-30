@@ -14,7 +14,9 @@ pygame.display.set_caption("JOGO JOKENPÔ")
 fonte = pygame.font.SysFont("timesnewroman",30)
 fonte2 = pygame.font.SysFont("timesnewroman",25)
 
-
+#funçoes estrelas
+qtdestrelas = 50
+estrelas = []
 
 #cores
 cor_branca = (255,255,255)
@@ -27,16 +29,25 @@ cor_amarela = (0,128,128)
 botao_pedra = pygame.image.load("pedra.png")
 botao_papel = pygame.image.load("papel.png")
 botao_tesoura = pygame.image.load("tesoura.png")
+imagem_estrelas = pygame.image.load("estrela.png")
 
 #mudar o tamanho dos ícones
 botao_pedra = pygame.transform.scale(botao_pedra,(40,40))
 botao_papel = pygame.transform.scale(botao_papel,(40,40))
 botao_tesoura = pygame.transform.scale(botao_tesoura,(40,40))
+imagem_estrelas = pygame.transform.scale(imagem_estrelas,(6,6))
 
 #informa a posição das imagens
 rect_pedra = botao_pedra.get_rect(topleft=(100,130))
 rect_papel = botao_papel.get_rect(topleft=(350,130))
 rect_tesoura = botao_tesoura.get_rect(topleft=(600,130))
+
+
+for i in range(qtdestrelas):
+    posicao_x = random.randint(0,750)
+    posicao_y = 0
+    velocidadeestrela  = 8
+    estrelas.append([posicao_x,posicao_y,velocidadeestrela])
 
 #criar loop finito
 fim_jogo = False
@@ -94,7 +105,14 @@ while not fim_jogo:
                 else:
                     imagem_computador = botao_tesoura
                     pontoempate+= 1
-    
+            
+    if pontousuario > pontocomputador:
+        for estrela in estrelas:
+            estrela[1] += estrela[2]
+            if estrela[1] > 600:
+                estrela[1] = 0
+                estrela[0] = random.randint(0,750)
+
 
     #limpar a tela para desenhar o próximo frame(quadro)
     tela.fill(cor_amarela)
@@ -103,6 +121,7 @@ while not fim_jogo:
     tela.blit(botao_pedra, rect_pedra)
     tela.blit(botao_papel, rect_papel)
     tela.blit(botao_tesoura, rect_tesoura)
+    tela.blit(imagem_estrelas, estrela[0],estrela[1])
 
     #Frases escritas na tela
     texto = fonte.render("~~~~~~~~~~~~~~~~~~JOGO JOKENPÔ~~~~~~~~~~~~~~~~~~", True, cor_preta)
